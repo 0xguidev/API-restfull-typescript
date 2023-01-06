@@ -1,9 +1,10 @@
 // prettier-ignore-start
 import 'reflect-metadata';
 // prettier-ignore-end
+import AppError from '@shared/err/AppError';
+import '@shared/typeorm';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
-import AppError from '../err/AppError';
 import routes from './routes';
 
 const app = express();
