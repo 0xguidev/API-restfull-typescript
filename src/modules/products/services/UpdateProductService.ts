@@ -10,7 +10,7 @@ interface IRequest {
   quantity: number;
 }
 
-class CreateProductService {
+export default class CreateProductService {
   public async execute({
     id,
     name,
@@ -39,4 +39,3 @@ class CreateProductService {
     return product;
   }
 }
-export default CreateProductService;
