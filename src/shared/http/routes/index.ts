@@ -1,9 +1,8 @@
+import productsRouter from '@modules/products/routes/products.routes';
 import { Router } from 'express';
 
 const routes = Router();
 
-routes.get('/', (_request, response) => {
-  return response.json({ message: 'Hello World!' });
-});
+routes.use('/products', productsRouter);
 
 export default routes;
