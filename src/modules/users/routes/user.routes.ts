@@ -20,5 +20,8 @@ userRouter.post(
   }),
   userController.create,
 );
+<<<<<<< HEAD
 
 export default userRouter;
+=======
+>>>>>>> 48b43466c0aa0ab79c383513ddc75eb29b04881a
