@@ -5,14 +5,12 @@ import User from '../typeorm/entities/User';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
 
 interface IRequest {
-  id: string;
-  name: string;
   email: string;
   password: string;
 }
 
 export default class CreateSessionsService {
-  public async execute({ id, name, email, password }: IRequest): Promise<User> {
+  public async execute({ email, password }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
     const user = await usersRepository.findByEmail(email);
 
