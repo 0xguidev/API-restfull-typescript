@@ -1,6 +1,7 @@
 import AppError from '@shared/err/AppError';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import authJwt from 'src/configs/auth';
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
@@ -29,9 +30,9 @@ export default class CreateSessionsService {
       throw new AppError('user not found', 401);
     }
 
-    const token = sign({}, 'asuhfuashfsu', {
+    const token = sign({}, authJwt.secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn: authJwt.expiresIn,
     });
 
     return { user, token };
