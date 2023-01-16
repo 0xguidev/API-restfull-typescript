@@ -8,17 +8,10 @@ interface IRequest {
   name: string;
   email: string;
   password: string;
-  avatar: string;
 }
 
 export default class UpdateUserService {
-  public async execute({
-    id,
-    name,
-    email,
-    password,
-    avatar,
-  }: IRequest): Promise<User> {
+  public async execute({ id, name, email, password }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
     const user = await usersRepository.findOne(id);
 
@@ -29,7 +22,6 @@ export default class UpdateUserService {
     user.name = name;
     user.email = email;
     user.password = password;
-    user.avatar = avatar;
 
     await usersRepository.save(user);
 

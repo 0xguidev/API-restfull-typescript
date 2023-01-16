@@ -12,7 +12,7 @@ export default class UsersController {
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
-    const { name, email, password, avatar } = req.body;
+    const { name, email, password } = req.body;
 
     const createUser = new CreateUserService();
 
@@ -20,7 +20,6 @@ export default class UsersController {
       name,
       email,
       password,
-      avatar,
     });
 
     return res.json(user);
