@@ -1,6 +1,6 @@
 const authJwt = {
   secret: 'asuhfuashfsu',
-  expiresIn: 'id',
+  expiresIn: '1d',
 };
 
 export default authJwt;
