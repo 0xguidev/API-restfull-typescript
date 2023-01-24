@@ -1,6 +1,6 @@
 import { celebrate, Joi, Segments } from 'celebrate';
 import { Router } from 'express';
-import ProductsController from '../controller/ProductController';
+import ProductsController from '../controllers/ProductController';
 
 const productsRouter = Router();
 
@@ -41,6 +41,7 @@ productsRouter.put(
   }),
   productsController.update,
 );
+
 productsRouter.delete(
   '/:id',
   celebrate({

@@ -1,5 +1,5 @@
-import crypto from 'crypto';
 import multer from 'multer';
+import crypto from 'node:crypto';
 import path from 'node:path';
 
 const UploadFolder = path.resolve(__dirname, '..', '..', 'uploads');
