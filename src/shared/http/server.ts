@@ -1,6 +1,7 @@
 // prettier-ignore-start
 import 'reflect-metadata';
 // prettier-ignore-end
+import uploadConfig from '@configs/upload';
 import AppError from '@shared/err/AppError';
 import '@shared/typeorm';
 import { errors } from 'celebrate';
@@ -14,6 +15,8 @@ const PORT = 3002;
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/files', express.static(uploadConfig.directory));
 
 app.use(routes);
 
