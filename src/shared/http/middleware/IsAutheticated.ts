@@ -1,8 +1,13 @@
 import AppError from '@shared/err/AppError';
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, request, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import authJwt from 'src/configs/auth';
 
+interface ITokenPayload {
+  iat: number;
+  exp: number;
+  sub: string;
+}
 export default function IsAuthenticated(
   req: Request,
   res: Response,
@@ -15,7 +20,13 @@ export default function IsAuthenticated(
   const [, token] = authHeaders.split(' ');
 
   try {
-    verify(token, authJwt.secret);
+    const decodedToken = verify(token, authJwt.secret);
+    const { sub } = decodedToken as ITokenPayload;
+
+    request.user = {
+      id: sub,
+    };
+
     return next();
   } catch {
     throw new AppError('Invalid Token', 402);
